@@ -4,6 +4,7 @@ import json
 
 fileName = input("파일 이름을 입력하세요.")
 addressIndex = input("주소 부분을 입력하세요.")
+resultFileName = input("저장할 파일 이름을 입력하세요.")
 keyFile = open("./key/juso.txt")
 key = keyFile.readline()
 keyFile.close()
@@ -21,6 +22,6 @@ for (index, data) in df.iterrows():
         count += 1
     else:
         error.append(index)
-    print(f"변경 중 {index + 1}/{len(df)}({index + 1 / len(df)}%)")
+    print(f"변경 중 {index + 1}/{len(df)}({(index + 1) / len(df)}%)")
 print(f"{count}/{index + 1}({count / (index + 1)}%)주소 변경을 완료하였습니다.")
-df.to_csv("./data/new.csv")
+df.to_csv(f"./data/{resultFileName}", index=False)
